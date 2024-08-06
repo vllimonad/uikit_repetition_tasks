@@ -22,9 +22,9 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        redLight.alpha = 1
-        yellowLight.alpha = 0.3
-        greenLight.alpha = 0.3
+        redLight.backgroundColor = .red
+        yellowLight.backgroundColor = .yellow
+        greenLight.backgroundColor = .green
         // Do any additional setup after loading the view.
     }
     @IBAction func buttonTapped(_ sender: Any) {
