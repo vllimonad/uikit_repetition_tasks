@@ -28,6 +28,15 @@ class ViewController: UIViewController {
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
+    
+    var button: UIButton = {
+        var button = UIButton()
+        button.setTitle("Done", for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +54,7 @@ class ViewController: UIViewController {
         
         view.addSubview(colorLabel)
         view.addSubview(stack)
+        view.addSubview(button)
         
         NSLayoutConstraint.activate([
             colorLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
@@ -55,8 +65,17 @@ class ViewController: UIViewController {
             stack.topAnchor.constraint(equalTo: colorLabel.bottomAnchor, constant: 32),
             stack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             stack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-            stack.heightAnchor.constraint(greaterThanOrEqualToConstant: 150)
+            stack.heightAnchor.constraint(greaterThanOrEqualToConstant: 150),
+            
+            button.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            button.widthAnchor.constraint(equalToConstant: 150),
+            button.heightAnchor.constraint(equalToConstant: 50),
+            button.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 16)
         ])
+    }
+    
+    @objc func buttonPressed() {
+        navigationController?.pushViewController(SecondViewController(), animated: true)
     }
 }
 
